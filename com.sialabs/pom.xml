@@ -4,4 +4,7 @@
   <artifactId>com.sialabs</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
+  <modules>
+  	<module>spring4</module>
+  </modules>
 </project>
