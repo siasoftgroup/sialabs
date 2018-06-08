@@ -31,6 +31,8 @@
 
 package org.sample;
 
+import java.util.Arrays;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
 import org.openjdk.jmh.annotations.Benchmark;
@@ -40,15 +42,22 @@ import org.openjdk.jmh.annotations.OutputTimeUnit;
 
 public class MyBenchmark {
 
-	@Benchmark@BenchmarkMode(Mode.AverageTime) @OutputTimeUnit(TimeUnit.MICROSECONDS)
-    public void testMethod() {
-        doMagic();
-    }
-    public static void doMagic() {
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException ignored) {
-        }
-    }
+	@Benchmark
+	@BenchmarkMode(Mode.AverageTime)
+	@OutputTimeUnit(TimeUnit.MICROSECONDS)
+	public void testMethod() {
+		doAlgorithmeToBench();
+	}
+
+	public static void doAlgorithmeToBench() {
+		try {
+
+			int[] array = new int[20000000];
+			ThreadLocalRandom rnd = ThreadLocalRandom.current();
+			Arrays.parallelSetAll(array, i -> rnd.nextInt(100));
+
+		} catch (Exception ignored) {
+		}
+	}
 
 }
