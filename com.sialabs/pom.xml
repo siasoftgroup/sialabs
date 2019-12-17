@@ -7,5 +7,6 @@
   
   <modules>
   	<module>spring4</module>
+  	<module>formation-java8</module>
   </modules>
 </project>
